@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -45,5 +45,11 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
+  'get /api/projects/:projectId/cadmodels': 'CadModelController.find',
+  'get /api/projects/:projectId/cadmodels/:id': 'CadModelController.findOne',
+
+  'get /api/projects/:projectId/cadmodels/:cadModelId/revisions': 'CadModelRevisionController.find',
+  'get /api/projects/:projectId/cadmodels/:cadModelId/revisions/:id': 'CadModelRevisionController.findOne'
 
 };
