@@ -91,10 +91,9 @@ Vagrant.configure('2') do |config|
     vb.customize ['modifyvm', :id, '--memory', '512']
   end
 
-  config.vm.network 'forwarded_port', guest: 8080, host: 8080
+  config.vm.network 'forwarded_port', guest: 5858, host: 5858
   config.vm.network 'forwarded_port', guest: 1337, host: 1337
   config.vm.network 'forwarded_port', guest: 27017, host: 27017
-  config.vm.network 'forwarded_port', guest: 28017, host: 28017
 
   config.vm.provision 'shell', inline: $create_swap_drive, privileged: true
   config.vm.provision 'shell', inline: $script, privileged: false
