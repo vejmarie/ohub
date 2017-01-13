@@ -61,7 +61,7 @@ cd /vagrant
 sudo rm -rf web/packages
 
 npm install
-#bower install
+bower install
 SCRIPT
 
 ENV["LC_ALL"] = "en_US.UTF-8"
