@@ -69,7 +69,7 @@ ENV["LC_ALL"] = "en_US.UTF-8"
 Vagrant.configure('2') do |config|
 
   config.vm.box = 'ubuntu/trusty64'
-  config.vm.hostname = 'Open Hardware Platform'
+  config.vm.hostname = 'hwplatform'
 
   config.vm.post_up_message = [
     "",
