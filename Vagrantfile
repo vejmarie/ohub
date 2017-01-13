@@ -79,7 +79,7 @@ Vagrant.configure('2') do |config|
     "SSH into the VM and launch to the application :",
     "",
     "  $ vagrant ssh",
-    "  $ npm start",
+    "  $ SAILS_MIGRATE=drop npm start",
     "",
     "The application is now available on http://localhost:1337",
     "",
