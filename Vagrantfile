@@ -33,10 +33,10 @@ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 sudo apt-get install -y git nodejs build-essential
 
 #################################################
-### Install bower
+### Install tools glabally
 #################################################
 
-sudo npm install -g bower sails node-inspector
+sudo npm install -g bower sails node-inspector gitbook-cli
 
 #################################################
 ### Install MongoDB
@@ -91,6 +91,7 @@ Vagrant.configure('2') do |config|
     vb.customize ['modifyvm', :id, '--memory', '512']
   end
 
+  config.vm.network 'forwarded_port', guest: 4000, host: 4000
   config.vm.network 'forwarded_port', guest: 5858, host: 5858
   config.vm.network 'forwarded_port', guest: 1337, host: 1337
   config.vm.network 'forwarded_port', guest: 27017, host: 27017

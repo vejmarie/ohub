@@ -1,0 +1,50 @@
+.api {
+    display: inline;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.api.label {
+    font-family: monospace;
+    color: #555;
+}
+
+.api.method {
+    font-size: 0.9em;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+}
+
+.api.method.post {
+    background-color: #19c10e;
+}
+
+.api.method.delete {
+    background-color: #ff3300;
+}
+
+.api.method.get {
+    background-color: #66ccff;
+}
+
+.api.method.put {
+    background-color: #ff9900;
+}
+
+.api.method.patch {
+    background-color: #cc9900;
+}
+
+.api.label code {
+    color: #8d1212;
+    background-color: #fff0f0;
+    border-radius: 3px;
+}
+
+.api.label code:before,
+.api.label code:after {
+    content: "";
+}
