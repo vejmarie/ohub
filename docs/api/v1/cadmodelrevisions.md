@@ -83,6 +83,34 @@ Code   | Name             | Description
 
 ___
 
+<span class="api method put">PUT</span> <span class="api label">/v1/projects/`{projectId}`/cadmodels/`{cadModelId}`/revisions/`{id}`</span>
+
+Upload the model binary file for this specific revision. If a file already exists for the revision
+it will be overwrited.
+
+###### body
+
+Single binary file in a `multipart/form-data` body
+
+###### Parameters
+
+Name           | In    | Type     | Required | Description
+---------------|-------|----------|----------|-----------------------------------
+`projectId`    | path  | string   | Yes      | Project ID
+`cadModelId`   | path  | string   | Yes      | CAD model ID
+`id`           | path  | string   | Yes      | Revision ID
+`content`      | body  | binary   | Yes      | File to upload
+
+###### Response codes
+
+Code   | Name             | Description
+-------|------------------|---------------------------------------------------
+`204`  | `No content`     | File has been correctly uploaded
+`400`  | `Bad Request`    | Request is either malformed or incomplete
+`404`  | `Not found`      | Project, CAD model or revision does not exist
+
+___
+
 <span class="api method get">GET</span> <span class="api label">/v1/projects/`{projectId}`/cadmodels/`{cadModelId}`/revisions/`{id}`</span>
 
 Get a single CAD model revision.
