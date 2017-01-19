@@ -48,3 +48,7 @@
 .api.label code:after {
     content: "";
 }
+
+table code {
+    background-color: transparent !important;
+}
