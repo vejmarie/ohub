@@ -4,3 +4,5 @@ assets/packages/
 .tmp/
 .vagrant/
 .vscode/
+
+*.swp
