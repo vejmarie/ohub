@@ -1,6 +1,7 @@
 # Summary
 
 * [API Reference](api/README.md)
+    * [Authentication](api/v1/authentication.md)
     * [Users](api/v1/users.md)
     * [Projects](api/v1/projects.md)
     * [CAD Models](api/v1/cadmodels.md)
