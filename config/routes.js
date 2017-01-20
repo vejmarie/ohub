@@ -26,9 +26,11 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-
-  'get /api/projects/:projectId/cadmodels': 'CadModelController.find',
-  'get /api/projects/:projectId/cadmodels/:id': 'CadModelController.findOne',
+  'post   /api/projects/:projectId/cadmodels'     : 'CadModelController.create',
+  'get    /api/projects/:projectId/cadmodels'     : 'CadModelController.find',
+  'get    /api/projects/:projectId/cadmodels/:id' : 'CadModelController.findOne',
+  'put    /api/projects/:projectId/cadmodels/:id' : 'CadModelController.update',
+  'delete /api/projects/:projectId/cadmodels/:id' : 'CadModelController.destroy',
 
   'get /api/projects/:projectId/cadmodels/:cadModelId/revisions': 'CadModelRevisionController.find',
   'get /api/projects/:projectId/cadmodels/:cadModelId/revisions/:id': 'CadModelRevisionController.findOne'
