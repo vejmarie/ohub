@@ -22,6 +22,11 @@ module.exports = {
       model: "cadmodel",
       columnName: "cadmodel",
       required: true
+    },
+    projectId: {
+      type: "string",
+      columnName: "projectId",
+      required: true
     }
   }
 

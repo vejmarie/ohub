@@ -32,7 +32,10 @@ module.exports.routes = {
   'put    /api/projects/:projectId/cadmodels/:id' : 'CadModelController.update',
   'delete /api/projects/:projectId/cadmodels/:id' : 'CadModelController.destroy',
 
-  'get /api/projects/:projectId/cadmodels/:cadModelId/revisions': 'CadModelRevisionController.find',
-  'get /api/projects/:projectId/cadmodels/:cadModelId/revisions/:id': 'CadModelRevisionController.findOne'
+  'post   /api/projects/:projectId/cadmodels/:cadModelId/revisions'     : 'CadModelRevisionController.create',
+  'get    /api/projects/:projectId/cadmodels/:cadModelId/revisions'     : 'CadModelRevisionController.find',
+  'get    /api/projects/:projectId/cadmodels/:cadModelId/revisions/:id' : 'CadModelRevisionController.findOne',
+  'put    /api/projects/:projectId/cadmodels/:cadModelId/revisions/:id' : 'CadModelRevisionController.update',
+  'delete /api/projects/:projectId/cadmodels/:cadModelId/revisions/:id' : 'CadModelRevisionController.destroy',
 
 };

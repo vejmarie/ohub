@@ -24,7 +24,7 @@ module.exports = {
     },
     owner: {
       model: "project",
-      columnName: "project",
+      columnName: "owner",
       required: true
     }
   }

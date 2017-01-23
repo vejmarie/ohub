@@ -64,7 +64,8 @@ module.exports.bootstrap = function(cb) {
       function createCadModelRevision(model, callback) {
         CadModelRevision.create({
           name: 'v1.0',
-          owner: model.id
+          owner: model.id,
+          projectId: model.owner
         }).exec(function(error, modelRevision) {
           if (error) {
             sails.log.error('Bootstrap | ', error);
