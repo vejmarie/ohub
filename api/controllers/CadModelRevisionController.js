@@ -86,18 +86,6 @@ module.exports = {
   },
 
   destroy: function(req, res) {
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-    sails.log.debug("::::::::::::::::::::::::::::::::::::::::::::::::")
-
     var c = req.body;
     // TODO check project exists and user is authorized
     CadModelRevision.destroy({ id: req.params.id, owner: req.params.cadModelId, projectId: req.params.projectId }, function(err, cadmodels) {
