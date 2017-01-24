@@ -1,0 +1,709 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>CAD Models · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="cadmodelrevisions.html" />
+    
+    
+    <link rel="prev" href="projects.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    API Reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="authentication.html">
+            
+                <a href="authentication.html">
+            
+                    
+                    Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="users.html">
+            
+                <a href="users.html">
+            
+                    
+                    Users
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="projects.html">
+            
+                <a href="projects.html">
+            
+                    
+                    Projects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4" data-path="cadmodels.html">
+            
+                <a href="cadmodels.html">
+            
+                    
+                    CAD Models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="cadmodelrevisions.html">
+            
+                <a href="cadmodelrevisions.html">
+            
+                    
+                    CAD Model Revisions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../contribute/">
+            
+                <a href="../../contribute/">
+            
+                    
+                    How to contribute ?
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../contribute/workflow.html">
+            
+                <a href="../../contribute/workflow.html">
+            
+                    
+                    Contribution workflow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../contribute/setupdevenv.html">
+            
+                <a href="../../contribute/setupdevenv.html">
+            
+                    
+                    Setup development environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >CAD Models</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="cad-models">CAD Models</h1>
+<p><span class="api method post">POST</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels</span></p>
+<p>Create a revision within a CAD model. A CAD model a descriptive document acting
+as a container for CAD model revisions.</p>
+<h6 id="body">body</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Open Teleporter Cabin&quot;</span>,
+    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;A teleportation cabin able to transport a human&quot;</span>
+}
+</code></pre>
+<h6 id="response">Response</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;5880b061ccb8b2921b3c6e30&quot;</span>,
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Open Teleporter Cabin&quot;</span>,
+    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;A teleportation cabin able to transport a human&quot;</span>,
+    <span class="hljs-string">&quot;owner&quot;</span>: <span class="hljs-string">&quot;5878b82aaf4966e10d1e0841&quot;</span>,
+    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
+    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
+}
+</code></pre>
+<h6 id="parameters">Parameters</h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>projectId</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>Project ID</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>body</td>
+<td>string</td>
+<td>Yes</td>
+<td>CAD model name</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>body</td>
+<td>string</td>
+<td>No</td>
+<td>CAD Model description</td>
+</tr>
+</tbody>
+</table>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>201</code></td>
+<td><code>Created</code></td>
+<td>CAD model has been correctly created</td>
+</tr>
+<tr>
+<td><code>409</code></td>
+<td><code>Conflict</code></td>
+<td>A CAD model already exists with the same name</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td><code>Bad Request</code></td>
+<td>Request is either malformed or incomplete</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span class="api method get">GET</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels</span></p>
+<p>Get all CAD models that belongs to a project.</p>
+<h6 id="response">Response</h6>
+<pre><code class="lang-json">[
+  {
+      <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;5880b061ccb8b2921b3c6e30&quot;</span>,
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Open Teleporter Cabin&quot;</span>,
+      <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;A teleportation cabin able to transport a human&quot;</span>,
+      <span class="hljs-string">&quot;owner&quot;</span>: <span class="hljs-string">&quot;5878b82aaf4966e10d1e0841&quot;</span>,
+      <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
+      <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
+  }
+]
+</code></pre>
+<h6 id="parameters">Parameters</h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>projectId</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>Project ID</td>
+</tr>
+</tbody>
+</table>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td><code>Ok</code></td>
+<td>CAD models has been retrieved</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td><code>Not found</code></td>
+<td>Project does not exist</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span class="api method get">GET</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels/<code>{id}</code></span></p>
+<p>Get a single CAD Model.</p>
+<h6 id="response">Response</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;587e2ceeccb8b2921b3c6e2c&quot;</span>,
+    <span class="hljs-string">&quot;identifier&quot;</span>: <span class="hljs-string">&quot;teleporter&quot;</span>,
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Open Teleporter&quot;</span>,
+    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;A basic teleporter to allow anyone to move all around the world&quot;</span>,
+    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.792Z&quot;</span>,
+    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.792Z&quot;</span>,
+}
+</code></pre>
+<h6 id="parameters">Parameters</h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>projectId</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>Project ID</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>CAD model ID</td>
+</tr>
+</tbody>
+</table>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td><code>Ok</code></td>
+<td>Project has been retrieved</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td><code>Not found</code></td>
+<td>Project or CAD model does not exist</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span class="api method put">PUT</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels/<code>{id}</code></span></p>
+<p>Update the specified CAD Model.</p>
+<h6 id="body">body</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;A teleportation cabin able to transport two humans&quot;</span>
+}
+</code></pre>
+<h6 id="response">Response</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;5880b061ccb8b2921b3c6e30&quot;</span>,
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Open Teleporter Cabin&quot;</span>,
+    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;A teleportation cabin able to transport two humans&quot;</span>,
+    <span class="hljs-string">&quot;owner&quot;</span>: <span class="hljs-string">&quot;5878b82aaf4966e10d1e0841&quot;</span>,
+    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
+    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
+}
+</code></pre>
+<h6 id="parameters">Parameters</h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>projectId</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>Project ID</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>CAD Model ID</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>body</td>
+<td>string</td>
+<td>No</td>
+<td>CAD model name</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>body</td>
+<td>string</td>
+<td>No</td>
+<td>CAD Model description</td>
+</tr>
+</tbody>
+</table>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>20O</code></td>
+<td><code>Ok</code></td>
+<td>CAD model has been correctly updated</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td><code>Not found</code></td>
+<td>Project or CAD model does not exist</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td><code>Bad Request</code></td>
+<td>Request is either malformed or incomplete</td>
+</tr>
+<tr>
+<td><code>409</code></td>
+<td><code>Conflict</code></td>
+<td>A CAD model already exists with the same name</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span class="api method delete">DETELE</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels/<code>{id}</code></span></p>
+<p>Delete a single CAD model.</p>
+<h6 id="parameters">Parameters</h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>projectId</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>Project ID</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>CAD model ID</td>
+</tr>
+</tbody>
+</table>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>204</code></td>
+<td><code>No content</code></td>
+<td>CAD model has been delete</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td><code>Not found</code></td>
+<td>Project or CAD model does not exist</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="projects.html" class="navigation navigation-prev " aria-label="Previous page: Projects">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="cadmodelrevisions.html" class="navigation navigation-next " aria-label="Next page: CAD Model Revisions">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CAD Models","level":"1.2.4","depth":2,"next":{"title":"CAD Model Revisions","level":"1.2.5","depth":2,"path":"api/v1/cadmodelrevisions.md","ref":"api/v1/cadmodelrevisions.md","articles":[]},"previous":{"title":"Projects","level":"1.2.3","depth":2,"path":"api/v1/projects.md","ref":"api/v1/projects.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/v1/cadmodels.md","mtime":"2017-01-24T13:54:34.631Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-24T13:57:43.473Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

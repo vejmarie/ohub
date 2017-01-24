@@ -1,0 +1,407 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Setup development environment · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="workflow.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../api/">
+            
+                <a href="../api/">
+            
+                    
+                    API Reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../api/v1/authentication.html">
+            
+                <a href="../api/v1/authentication.html">
+            
+                    
+                    Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../api/v1/users.html">
+            
+                <a href="../api/v1/users.html">
+            
+                    
+                    Users
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../api/v1/projects.html">
+            
+                <a href="../api/v1/projects.html">
+            
+                    
+                    Projects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../api/v1/cadmodels.html">
+            
+                <a href="../api/v1/cadmodels.html">
+            
+                    
+                    CAD Models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../api/v1/cadmodelrevisions.html">
+            
+                <a href="../api/v1/cadmodelrevisions.html">
+            
+                    
+                    CAD Model Revisions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    How to contribute ?
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="workflow.html">
+            
+                <a href="workflow.html">
+            
+                    
+                    Contribution workflow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="setupdevenv.html">
+            
+                <a href="setupdevenv.html">
+            
+                    
+                    Setup development environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Setup development environment</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="setup-development-environment">Setup development environment</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>You first need <a href="https://www.vagrantup.com/" target="_blank">Vagrant</a> and <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> installed
+on your local machine</li>
+<li>TCP ports 1337 (Sails), 27017 (MongoDB) and 5858 (NodeJS Debug) must be available on your local machine. If you
+wish to use other ports you can change <code>hosts</code> ports in the <code>Vagrantfile</code>.</li>
+</ul>
+<h2 id="setup-environment">Setup environment</h2>
+<p>Clone the repo and and install everything needed.</p>
+<pre><code class="lang-bash">$ git <span class="hljs-built_in">clone</span> git@github.com:ggiamarchi/ohub.git
+$ <span class="hljs-built_in">cd</span> ohub
+$ vagrant up
+</code></pre>
+<p>SSH into the machine and run the application.</p>
+<pre><code class="lang-bash">$ vagrant ssh
+$ SAILS_MIGRATE=drop npm start
+</code></pre>
+<p>The variable <code>SAILS_MIGRATE</code> indicates whether database tables have to be dropped and created back on server
+startup. Setting it to <code>true</code> is mandatory for the first start because tables does not exists yet. The next time
+you start the server, if you don&apos;t want your database to be flushed, set the variable to <code>safe</code> or merely omit
+the variable on the command line.</p>
+<p><strong>Note.</strong> Have a look to the configuration section bellow to see the complete list of environement variables.</p>
+<p>At this point the application is up and running and some sample data had been inserted into the database. Now
+you are done and ready to develop awesome features.</p>
+<p>The application should be available on <a href="http://localhost:1337" target="_blank">http://localhost:1337</a></p>
+<h1 id="configuration-reference">Configuration reference</h1>
+<table>
+<thead>
+<tr>
+<th>Variables</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SAILS_MIGRATE</code></td>
+<td><code>safe</code></td>
+</tr>
+<tr>
+<td><code>PORT</code></td>
+<td><code>1337</code></td>
+</tr>
+<tr>
+<td><code>NODE_ENV</code></td>
+<td><code>development</code></td>
+</tr>
+<tr>
+<td><code>MONGO_URI</code></td>
+<td><code>mongodb://localhost:27017/ohp</code></td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="workflow.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Contribution workflow">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Setup development environment","level":"1.3.2","depth":2,"previous":{"title":"Contribution workflow","level":"1.3.1","depth":2,"path":"contribute/workflow.md","ref":"contribute/workflow.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"contribute/setupdevenv.md","mtime":"2017-01-24T13:54:34.631Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-24T13:57:43.473Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

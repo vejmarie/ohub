@@ -1,0 +1,680 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Users · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="projects.html" />
+    
+    
+    <link rel="prev" href="authentication.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    API Reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="authentication.html">
+            
+                <a href="authentication.html">
+            
+                    
+                    Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="users.html">
+            
+                <a href="users.html">
+            
+                    
+                    Users
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="projects.html">
+            
+                <a href="projects.html">
+            
+                    
+                    Projects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="cadmodels.html">
+            
+                <a href="cadmodels.html">
+            
+                    
+                    CAD Models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="cadmodelrevisions.html">
+            
+                <a href="cadmodelrevisions.html">
+            
+                    
+                    CAD Model Revisions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../contribute/">
+            
+                <a href="../../contribute/">
+            
+                    
+                    How to contribute ?
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../contribute/workflow.html">
+            
+                <a href="../../contribute/workflow.html">
+            
+                    
+                    Contribution workflow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../contribute/setupdevenv.html">
+            
+                <a href="../../contribute/setupdevenv.html">
+            
+                    
+                    Setup development environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Users</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="users">Users</h1>
+<p><span class="api method post">POST</span> <span class="api label">/v1/users</span></p>
+<p>Create a user.</p>
+<h6 id="body">body</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;firstname&quot;</span>: <span class="hljs-string">&quot;John&quot;</span>,
+    <span class="hljs-string">&quot;lastname&quot;</span>: <span class="hljs-string">&quot;Lenon&quot;</span>,
+    <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;john.lenon@opencompute.org&quot;</span>,
+    <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;Dlf0K3mBp&quot;</span>
+}
+</code></pre>
+<h6 id="response">Response</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;587e2ceeccb8b2921b3c6e2b&quot;</span>,
+    <span class="hljs-string">&quot;firstname&quot;</span>: <span class="hljs-string">&quot;John&quot;</span>,
+    <span class="hljs-string">&quot;lastname&quot;</span>: <span class="hljs-string">&quot;Lenon&quot;</span>,
+    <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;john.lenon@opencompute.org&quot;</span>,
+    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;1940-10-08T10:43:26.730Z&quot;</span>,
+    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;1980-12-09T04:07:00.000Z&quot;</span>
+}
+</code></pre>
+<h6 id="parameters">Parameters</h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>email</code></td>
+<td>body</td>
+<td>string</td>
+<td>Yes</td>
+<td>Email address for the user</td>
+</tr>
+<tr>
+<td><code>firstname</code></td>
+<td>body</td>
+<td>string</td>
+<td>Yes</td>
+<td>Firstname for the user</td>
+</tr>
+<tr>
+<td><code>lastname</code></td>
+<td>body</td>
+<td>string</td>
+<td>Yes</td>
+<td>Lastname for the user</td>
+</tr>
+<tr>
+<td><code>company</code></td>
+<td>body</td>
+<td>string</td>
+<td>No</td>
+<td>Company name for the user</td>
+</tr>
+</tbody>
+</table>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>201</code></td>
+<td><code>Created</code></td>
+<td>User has been correctly created</td>
+</tr>
+<tr>
+<td><code>409</code></td>
+<td><code>Conflict</code></td>
+<td>A user already exists with the same email address</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td><code>Bad Request</code></td>
+<td>Request is either malformed or incomplete</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span class="api method get">GET</span> <span class="api label">/v1/users</span></p>
+<p>Get all users.</p>
+<h6 id="response">Response</h6>
+<pre><code class="lang-json">[
+    {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;587e2ceeccb8b2921b3c6e2b&quot;</span>,
+        <span class="hljs-string">&quot;firstname&quot;</span>: <span class="hljs-string">&quot;John&quot;</span>,
+        <span class="hljs-string">&quot;lastname&quot;</span>: <span class="hljs-string">&quot;Lenon&quot;</span>,
+        <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;john.lenon@opencompute.org&quot;</span>,
+        <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;1940-10-08T10:43:26.730Z&quot;</span>,
+        <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;1980-12-09T04:07:00.000Z&quot;</span>
+    },
+    {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;587e2ef6ccb8b2921b3c6e2f&quot;</span>,
+        <span class="hljs-string">&quot;firstname&quot;</span>: <span class="hljs-string">&quot;Paul&quot;</span>,
+        <span class="hljs-string">&quot;lastname&quot;</span>: <span class="hljs-string">&quot;McCartney&quot;</span>,
+        <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;paul.mccartney@opencompute.org&quot;</span>,
+        <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;1942-06-18T14:40:46.760Z&quot;</span>,
+        <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.130Z&quot;</span>
+    }
+]
+</code></pre>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td><code>Ok</code></td>
+<td>Users has been retrieved</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span class="api method get">GET</span> <span class="api label">/v1/users/<code>{id}</code></span></p>
+<p>Get a single user.</p>
+<h6 id="response">Response</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;587e2ef6ccb8b2921b3c6e2f&quot;</span>,
+    <span class="hljs-string">&quot;firstname&quot;</span>: <span class="hljs-string">&quot;Paul&quot;</span>,
+    <span class="hljs-string">&quot;lastname&quot;</span>: <span class="hljs-string">&quot;McCartney&quot;</span>,
+    <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;paul.mccartney@opencompute.org&quot;</span>,
+    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;1942-06-18T14:40:46.760Z&quot;</span>,
+    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.130Z&quot;</span>
+}
+</code></pre>
+<h6 id="parameters">Parameters</h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>User ID</td>
+</tr>
+</tbody>
+</table>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td><code>Ok</code></td>
+<td>User has been retrieved</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td><code>Not found</code></td>
+<td>No user exists for this ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span class="api method put">PUT</span> <span class="api label">/v1/users/<code>{id}</code></span></p>
+<p>Update the specified user.</p>
+<h6 id="body">body</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;firstname&quot;</span>: <span class="hljs-string">&quot;John Winston&quot;</span>,
+}
+</code></pre>
+<h6 id="response">Response</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;587e2ceeccb8b2921b3c6e2b&quot;</span>,
+    <span class="hljs-string">&quot;firstname&quot;</span>: <span class="hljs-string">&quot;John&quot;</span>,
+    <span class="hljs-string">&quot;lastname&quot;</span>: <span class="hljs-string">&quot;Lenon&quot;</span>,
+    <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;john.lenon@opencompute.org&quot;</span>,
+    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;1940-10-08T10:43:26.730Z&quot;</span>,
+    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.760Z&quot;</span>
+}
+</code></pre>
+<h6 id="parameters">Parameters</h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>ID for the user to update</td>
+</tr>
+<tr>
+<td><code>firstname</code></td>
+<td>body</td>
+<td>string</td>
+<td>No</td>
+<td>Firstname for the user</td>
+</tr>
+<tr>
+<td><code>lastname</code></td>
+<td>body</td>
+<td>string</td>
+<td>No</td>
+<td>Lastname for the user</td>
+</tr>
+<tr>
+<td><code>company</code></td>
+<td>body</td>
+<td>string</td>
+<td>No</td>
+<td>Company name for the user</td>
+</tr>
+</tbody>
+</table>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>20O</code></td>
+<td><code>Ok</code></td>
+<td>User has been correctly updated</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td><code>Not found</code></td>
+<td>No user exists for this ID</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td><code>Bad Request</code></td>
+<td>Request is either malformed or incomplete</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span class="api method delete">DETELE</span> <span class="api label">/v1/users/<code>{id}</code></span></p>
+<p>Delete a single user.</p>
+<h6 id="parameters">Parameters</h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>User ID</td>
+</tr>
+</tbody>
+</table>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>204</code></td>
+<td><code>No content</code></td>
+<td>User has been delete</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td><code>Not found</code></td>
+<td>No user exists for this ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="authentication.html" class="navigation navigation-prev " aria-label="Previous page: Authentication">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="projects.html" class="navigation navigation-next " aria-label="Next page: Projects">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Users","level":"1.2.2","depth":2,"next":{"title":"Projects","level":"1.2.3","depth":2,"path":"api/v1/projects.md","ref":"api/v1/projects.md","articles":[]},"previous":{"title":"Authentication","level":"1.2.1","depth":2,"path":"api/v1/authentication.md","ref":"api/v1/authentication.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/v1/users.md","mtime":"2017-01-24T13:54:34.631Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-24T13:57:43.473Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
