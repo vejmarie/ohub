@@ -7,8 +7,18 @@ services:
 
 install:
   - travis_retry npm install
+  - travis_retry npm install -g gitbook-cli
 
 script:
   - SAILS_MIGRATE=drop npm test
+  - cd docs
+  - gitbook build
+
+after_success:
+  - bash deploy.sh
+
+env:
+  global:
+    secure: GKPQo+6Shn1g9tPGM71QWoaae2fM/OOwcr2j42J07oOb4gFLxuc+3+pbgZHPDIsN0KbeWdO6LgJgZmCbgrSymMdY43Fh9JBcweVoQ1cOF5wnJBZTRhi6PrhdjXcYqxXzMtuCqRp7na4jwWKJocu/qqmEeS1DQcyaCaceLcGSC3ZWXYcdPDHyRP4fNyFIPYoZM9/S4oU5Bdmezm1YJMDfUaKxfpJjVOnkyHfE4fSC691kjQu8BjwpToApfVnkK9joo8Nbj7tNCPTM3rpWqQvWhjWyKoDdDEf4uJR+xN29mU0Yo14HJBuTel/D7sa6nhv0PVGSXL2Xuz6zr26t2au9xn4I4xB3vxKyo+T0Wj3lBwPD47UQlfkF2hG1/+V74aFKxI3ZUFVFIty8tN7m1akUUdMOzg6CqjfL7h75qBbK6tEYdf/hXw7TBMvJrcy65L/ySyln52tnHWhBFdkBYmG2b/AC22kTf35NjZhHOsyuBDzrHAyQAuplkr5bm2U+Go86fO4z86xM/jD8NvCxS58lUnpkGws9rDgZjLXErqaHYqIOOvQ7jiPfxfFBxRN9P0DYp0Ll0aOB86BTHBkpOSG98Z3h6K0z++1aOSKsV2ZOHMDkgxKPYuDjhekOqAuRSdnGsZMQB1q1k9wEXAakElfOLP8mvIQrbrm8IuQtdYHfhDc=
 
 sudo: false
