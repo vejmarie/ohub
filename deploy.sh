@@ -19,6 +19,8 @@ rev=$(git rev-parse --short HEAD)
 
 cd ${SCRIPT_DIR}/_book
 
+cp ../README.md .
+
 git init
 git config user.name "Travis CI"
 git config user.email "travis-ci@opencomputeproject.org"
