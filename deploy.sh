@@ -19,7 +19,12 @@ rev=$(git rev-parse --short HEAD)
 
 cd ${SCRIPT_DIR}/_book
 
-cp ../README.md .
+cat > README.md <<EOF
+# Open Hardware Platform
+
+This website is automatically generated from
+[sources](https://github.com/opencomputeproject/ohub/tree/master/docs)
+EOF
 
 git init
 git config user.name "Travis CI"
