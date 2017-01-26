@@ -26,6 +26,8 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+  'post /api/tokens': 'AuthController.authenticate',
+
   'post   /api/projects/:projectId/cadmodels'     : 'CadModelController.create',
   'get    /api/projects/:projectId/cadmodels'     : 'CadModelController.find',
   'get    /api/projects/:projectId/cadmodels/:id' : 'CadModelController.findOne',

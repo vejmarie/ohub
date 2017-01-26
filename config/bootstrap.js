@@ -16,6 +16,22 @@ module.exports.bootstrap = function(cb) {
       sails.log.debug('Bootstrap | starting the application in development mode with an empty database');
       sails.log.debug('Bootstrap | create sample data for development and testing pupose');
 
+      function createAdmin(callback) {
+        User.create({
+          firstname: 'Admin',
+          lastname: 'OHub',
+          email: 'admin.ohub@opencompute.org',
+          password: 'password',
+        }).exec(function(error, user) {
+          if (error) {
+            sails.log.error('Bootstrap | ', error);
+            throw error;
+          }
+          sails.log.info('Bootstrap | Inserted user :', user);
+          callback();
+        });
+      }
+
       function createUser(callback) {
         User.create({
           firstname: 'John',
@@ -77,6 +93,7 @@ module.exports.bootstrap = function(cb) {
       }
 
       async.waterfall([
+        createAdmin,
         createUser,
         createProject,
         createCadModel,

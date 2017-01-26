@@ -38,9 +38,12 @@ The application should be available on http://localhost:1337
 
 # Configuration reference
 
-Variables        | Default value
------------------|----------------------------------
-`SAILS_MIGRATE`  | `safe`
-`PORT`           | `1337`
-`NODE_ENV`       | `development`
-`MONGO_URI`      | `mongodb://localhost:27017/ohp`
+Variable                   | Default value                    | Comment
+---------------------------|----------------------------------|-------------------
+`SAILS_MIGRATE`            | `safe`                           |
+`PORT`                     | `1337`                           |
+`NODE_ENV`                 | `development`                    |
+`MONGO_URI`                | `mongodb://localhost:27017/ohp`  |
+`BASE_URL`                 | `http://localhost:1337`          |
+`API_AUTH_TOKEN_DURATION`  | `3600`                           | In seconds
+`API_AUTH_JWT_SECRET`      | `jwtsecret`                      |
