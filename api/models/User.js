@@ -39,6 +39,22 @@ module.exports = {
       collection: "project",
       via: "owner"
     }
+  },
+
+  beforeCreate: function(user, cb) {
+    Crypto.hashPassword(user.password, function(err, hash) {
+      user.password = hash;
+      cb(err);
+    });
+  },
+
+  beforeUpdate: function(user, cb) {
+    if (user.password) {
+      Crypto.hashPassword(user.password, function(err, hash) {
+        user.password = hash;
+        cb(err);
+      });
+    }
   }
 
 };

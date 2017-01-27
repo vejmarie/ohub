@@ -9,7 +9,24 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
  */
 
+var jwt = require('jsonwebtoken');
+
+function internalBaseUrl() {
+    if (process.env.PORT) {
+        return 'http://localhost:' + process.env.PORT;
+    }
+    return 'http://localhost:1337';
+}
+
 module.exports.http = {
+
+  baseUrl: process.env.BASE_URL || internalBaseUrl(),
+  internalBaseUrl: internalBaseUrl(),
+
+  jwt: {
+    tokenDuration: process.env.API_AUTH_TOKEN_DURATION || 86400,
+    secret: process.env.API_AUTH_JWT_SECRET || 'jwtsecret'
+  },
 
   /****************************************************************************
   *                                                                           *
@@ -23,16 +40,17 @@ module.exports.http = {
 
   middleware: {
 
-  /***************************************************************************
-  *                                                                          *
-  * The order in which middleware should be run for HTTP request. (the Sails *
-  * router is invoked by the "router" middleware below.)                     *
-  *                                                                          *
-  ***************************************************************************/
+    /***************************************************************************
+    *                                                                          *
+    * The order in which middleware should be run for HTTP request. (the Sails *
+    * router is invoked by the "router" middleware below.)                     *
+    *                                                                          *
+    ***************************************************************************/
 
     order: [
       'startRequestTimer',
       'cookieParser',
+      'decodeJwtToken',
       'session',
       'requestLogger',
       'bodyParser',
@@ -48,25 +66,57 @@ module.exports.http = {
       '500'
     ],
 
+    decodeJwtToken: function(req, res, next) {
+
+      if (!req.url.startsWith('/api/')) {
+        return next();
+      }
+
+      var token = req.headers['x-auth-token'];
+
+      sails.log.debug("==== Token => ", token);
+
+      req.isAuthenticated = function() {
+        if (req.user) {
+          return true;
+        }
+        return false;
+      }
+
+      if (token) {
+        jwt.verify(token, sails.config.http.jwt.secret, function(err, decoded) {
+          if (err) {
+            return res.send(401, { message: 'Token authentication failed' });
+          }
+          req.user = decoded;
+          sails.log.debug("==== Decoded Token => ", decoded);
+          next();
+        });
+        return;
+      }
+
+      next();
+    },
+
     requestLogger: function (req, res, next) {
       sails.log.debug("Requested :: ", req.method, req.url);
       return next();
     },
 
-  /***************************************************************************
-  *                                                                          *
-  * The body parser that will handle incoming multipart HTTP requests. By    *
-  * default as of v0.10, Sails uses                                          *
-  * [skipper](http://github.com/balderdashy/skipper). See                    *
-  * http://www.senchalabs.org/connect/multipart.html for other options.      *
-  *                                                                          *
-  * Note that Sails uses an internal instance of Skipper by default; to      *
-  * override it and specify more options, make sure to "npm install skipper" *
-  * in your project first.  You can also specify a different body parser or  *
-  * a custom function with req, res and next parameters (just like any other *
-  * middleware function).                                                    *
-  *                                                                          *
-  ***************************************************************************/
+    /***************************************************************************
+    *                                                                          *
+    * The body parser that will handle incoming multipart HTTP requests. By    *
+    * default as of v0.10, Sails uses                                          *
+    * [skipper](http://github.com/balderdashy/skipper). See                    *
+    * http://www.senchalabs.org/connect/multipart.html for other options.      *
+    *                                                                          *
+    * Note that Sails uses an internal instance of Skipper by default; to      *
+    * override it and specify more options, make sure to "npm install skipper" *
+    * in your project first.  You can also specify a different body parser or  *
+    * a custom function with req, res and next parameters (just like any other *
+    * middleware function).                                                    *
+    *                                                                          *
+    ***************************************************************************/
 
     // bodyParser: require('skipper')({strict: true})
 
