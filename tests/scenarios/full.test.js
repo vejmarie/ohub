@@ -11,7 +11,7 @@ describe('Complete scenario', function() {
     describe('With wrong login', function() {
       it('should raise a 401 error', function (done) {
         request(sails.hooks.http.app)
-          .post('/api/tokens')
+          .post('/api/v1/tokens')
           .send({
             username: 'wrong_login',
             password: 'password'
@@ -23,7 +23,7 @@ describe('Complete scenario', function() {
     describe('With wrong password', function() {
       it('should raise a 401 error', function (done) {
         request(sails.hooks.http.app)
-          .post('/api/tokens')
+          .post('/api/v1/tokens')
           .send({
             username: 'admin.ohub@opencompute.org',
             password: 'wrong_password'
@@ -35,7 +35,7 @@ describe('Complete scenario', function() {
     describe('With good credentials', function() {
       it('should return a token', function (done) {
         request(sails.hooks.http.app)
-          .post('/api/tokens')
+          .post('/api/v1/tokens')
           .send({
             username: 'admin.ohub@opencompute.org',
             password: 'password'
@@ -52,7 +52,7 @@ describe('Complete scenario', function() {
   describe('Create a user', function() {
     it('should create a user', function (done) {
       request(sails.hooks.http.app)
-        .post('/api/users')
+        .post('/api/v1/users')
         .set('X-Auth-Token', token)
         .send({
           firstname: 'John',
@@ -71,7 +71,7 @@ describe('Complete scenario', function() {
   describe('Create a project', function() {
     it('should create a project', function (done) {
       request(sails.hooks.http.app)
-        .post('/api/projects')
+        .post('/api/v1/projects')
         .set('X-Auth-Token', token)
         .send({
           name: 'Awesome Project',
@@ -90,7 +90,7 @@ describe('Complete scenario', function() {
     describe('with evrything ok', function() {
       it('should create a CAD model', function (done) {
         request(sails.hooks.http.app)
-          .post('/api/projects/' + project.id + '/cadmodels')
+          .post('/api/v1/projects/' + project.id + '/cadmodels')
           .set('X-Auth-Token', token)
           .send({
             name: "Open Teleporter Cabin",
@@ -108,7 +108,7 @@ describe('Complete scenario', function() {
     // describe('with a name that already exists within this project', function() {
     //   it('should fails with a 409 error', function (done) {
     //     request(sails.hooks.http.app)
-    //       .post('/api/projects/' + project.id + '/cadmodels')
+    //       .post('/api/v1/projects/' + project.id + '/cadmodels')
     //       .send({
     //         name: "Open Teleporter Cabin",
     //         description: "A teleportation cabin able to transport a human"
@@ -123,7 +123,7 @@ describe('Complete scenario', function() {
     describe('with evrything ok', function() {
       it('should create a CAD model revision', function (done) {
         request(sails.hooks.http.app)
-          .post('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions')
+          .post('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions')
           .set('X-Auth-Token', token)
           .send({
             name: "v1.0",
@@ -141,7 +141,7 @@ describe('Complete scenario', function() {
     // describe('with a name that already exists within this CAD model', function() {
     //   it('should fails with a 409 error', function (done) {
     //     request(sails.hooks.http.app)
-    //       .post('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions')
+    //       .post('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions')
     //       .send({
     //         name: "v1.0",
     //         description: "First stable release"
@@ -156,7 +156,7 @@ describe('Complete scenario', function() {
     describe('with the owner', function() {
       it('should update a CAD model revision', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions/' + cadmodelRevision.id)
+          .put('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions/' + cadmodelRevision.id)
           .set('X-Auth-Token', token)
           .send({
             description: "First stable release",
@@ -173,7 +173,7 @@ describe('Complete scenario', function() {
     describe('without the owner', function() {
       it('should update a CAD model revision', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions/' + cadmodelRevision.id)
+          .put('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions/' + cadmodelRevision.id)
           .set('X-Auth-Token', token)
           .send({
             description: "First stable release"
@@ -189,7 +189,7 @@ describe('Complete scenario', function() {
     describe('with a bad project ID', function() {
       it('should fails with a 404 error', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/0/cadmodels/' + cadmodel.id + '/revisions/' + cadmodelRevision.id)
+          .put('/api/v1/projects/0/cadmodels/' + cadmodel.id + '/revisions/' + cadmodelRevision.id)
           .set('X-Auth-Token', token)
           .send({
             description: "A teleportation cabin able to transport two humans"
@@ -202,7 +202,7 @@ describe('Complete scenario', function() {
     describe('with a bad CAD model ID', function() {
       it('should fails with a 404 error', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/' + project.id + '/cadmodels/0/revisions/' + cadmodelRevision.id)
+          .put('/api/v1/projects/' + project.id + '/cadmodels/0/revisions/' + cadmodelRevision.id)
           .set('X-Auth-Token', token)
           .send({
             description: "A teleportation cabin able to transport two humans"
@@ -215,7 +215,7 @@ describe('Complete scenario', function() {
     describe('with a bad CAD model revision ID', function() {
       it('should fails with a 404 error', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions/0')
+          .put('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions/0')
           .set('X-Auth-Token', token)
           .send({
             description: "A teleportation cabin able to transport two humans"
@@ -228,7 +228,7 @@ describe('Complete scenario', function() {
     describe('with a different owner', function() {
       it('should fails with a 400 error', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions/' + cadmodelRevision.id)
+          .put('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions/' + cadmodelRevision.id)
           .set('X-Auth-Token', token)
           .send({
             owner: "another owner"
@@ -242,7 +242,7 @@ describe('Complete scenario', function() {
   describe('Delete a CAD model revision', function() {
     it('should delete a CAD model revision', function (done) {
       request(sails.hooks.http.app)
-        .delete('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions/' + cadmodelRevision.id)
+        .delete('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id + '/revisions/' + cadmodelRevision.id)
         .set('X-Auth-Token', token)
         .expect(204)
         .end(done);
@@ -253,7 +253,7 @@ describe('Complete scenario', function() {
     describe('with the owner', function() {
       it('should update a CAD model', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id)
+          .put('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id)
           .set('X-Auth-Token', token)
           .send({
             description: "A teleportation cabin able to transport two humans",
@@ -270,7 +270,7 @@ describe('Complete scenario', function() {
     describe('without the owner', function() {
       it('should update a CAD model', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id)
+          .put('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id)
           .set('X-Auth-Token', token)
           .send({
             description: "A teleportation cabin able to transport two humans"
@@ -286,7 +286,7 @@ describe('Complete scenario', function() {
     describe('with a bad project ID', function() {
       it('should fails with a 404 error', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/0/cadmodels/' + cadmodel.id)
+          .put('/api/v1/projects/0/cadmodels/' + cadmodel.id)
           .set('X-Auth-Token', token)
           .send({
             description: "A teleportation cabin able to transport two humans"
@@ -299,7 +299,7 @@ describe('Complete scenario', function() {
     describe('with a bad CAD model ID', function() {
       it('should fails with a 404 error', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/' + project.id + '/cadmodels/0')
+          .put('/api/v1/projects/' + project.id + '/cadmodels/0')
           .set('X-Auth-Token', token)
           .send({
             description: "A teleportation cabin able to transport two humans"
@@ -312,7 +312,7 @@ describe('Complete scenario', function() {
     describe('with a different owner', function() {
       it('should fails with a 400 error', function (done) {
         request(sails.hooks.http.app)
-          .put('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id)
+          .put('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id)
           .set('X-Auth-Token', token)
           .send({
             owner: "another owner"
@@ -326,7 +326,7 @@ describe('Complete scenario', function() {
   describe('Delete a CAD model', function() {
     it('should delete a CAD model', function (done) {
       request(sails.hooks.http.app)
-        .delete('/api/projects/' + project.id + '/cadmodels/' + cadmodel.id)
+        .delete('/api/v1/projects/' + project.id + '/cadmodels/' + cadmodel.id)
         .set('X-Auth-Token', token)
         .expect(204)
         .end(done);

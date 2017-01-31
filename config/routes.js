@@ -26,18 +26,18 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'post /api/tokens': 'AuthController.authenticate',
+  'post /api/v1/tokens': 'AuthController.authenticate',
 
-  'post   /api/projects/:projectId/cadmodels'     : 'CadModelController.create',
-  'get    /api/projects/:projectId/cadmodels'     : 'CadModelController.find',
-  'get    /api/projects/:projectId/cadmodels/:id' : 'CadModelController.findOne',
-  'put    /api/projects/:projectId/cadmodels/:id' : 'CadModelController.update',
-  'delete /api/projects/:projectId/cadmodels/:id' : 'CadModelController.destroy',
+  'post   /api/v1/projects/:projectId/cadmodels'     : 'CadModelController.create',
+  'get    /api/v1/projects/:projectId/cadmodels'     : 'CadModelController.find',
+  'get    /api/v1/projects/:projectId/cadmodels/:id' : 'CadModelController.findOne',
+  'put    /api/v1/projects/:projectId/cadmodels/:id' : 'CadModelController.update',
+  'delete /api/v1/projects/:projectId/cadmodels/:id' : 'CadModelController.destroy',
 
-  'post   /api/projects/:projectId/cadmodels/:cadModelId/revisions'     : 'CadModelRevisionController.create',
-  'get    /api/projects/:projectId/cadmodels/:cadModelId/revisions'     : 'CadModelRevisionController.find',
-  'get    /api/projects/:projectId/cadmodels/:cadModelId/revisions/:id' : 'CadModelRevisionController.findOne',
-  'put    /api/projects/:projectId/cadmodels/:cadModelId/revisions/:id' : 'CadModelRevisionController.update',
-  'delete /api/projects/:projectId/cadmodels/:cadModelId/revisions/:id' : 'CadModelRevisionController.destroy',
+  'post   /api/v1/projects/:projectId/cadmodels/:cadModelId/revisions'     : 'CadModelRevisionController.create',
+  'get    /api/v1/projects/:projectId/cadmodels/:cadModelId/revisions'     : 'CadModelRevisionController.find',
+  'get    /api/v1/projects/:projectId/cadmodels/:cadModelId/revisions/:id' : 'CadModelRevisionController.findOne',
+  'put    /api/v1/projects/:projectId/cadmodels/:cadModelId/revisions/:id' : 'CadModelRevisionController.update',
+  'delete /api/v1/projects/:projectId/cadmodels/:cadModelId/revisions/:id' : 'CadModelRevisionController.destroy',
 
 };
