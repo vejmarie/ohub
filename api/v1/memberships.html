@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>CAD Model Revisions · GitBook</title>
+        <title>Memberships · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../../contribute/" />
+    <link rel="next" href="cadmodels.html" />
     
     
-    <link rel="prev" href="cadmodels.html" />
+    <link rel="prev" href="roles.html" />
     
 
     </head>
@@ -170,7 +170,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="memberships.html">
+        <li class="chapter active" data-level="1.2.5" data-path="memberships.html">
             
                 <a href="memberships.html">
             
@@ -196,7 +196,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.7" data-path="cadmodelrevisions.html">
+        <li class="chapter " data-level="1.2.7" data-path="cadmodelrevisions.html">
             
                 <a href="cadmodelrevisions.html">
             
@@ -289,7 +289,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >CAD Model Revisions</a>
+        <a href="../.." >Memberships</a>
     </h1>
 </div>
 
@@ -304,25 +304,22 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="cad-model-revisions">CAD Model Revisions</h1>
-<p><span class="api method post">POST</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels/<code>{cadModelId}</code>/revisions</span></p>
-<p>Create a CAD model revision within a project. A CAD model revision is a descriptive document
-containing metadata for a binary model file. For instance a <a href="https://en.wikipedia.org/wiki/ISO_10303" target="_blank">STEP</a>
-file.</p>
+                                <h1 id="memberships">Memberships</h1>
+<p><span class="api method post">POST</span> <span class="api label">/v1/projects/<code>{projectId}</code>/memberships</span></p>
+<p>Create a member relationship between a user and a project. Available roles can be listed resquesting using the <a href="roles.html">roles</a> API.</p>
 <h6 id="body">body</h6>
 <pre><code class="lang-json">{
-    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;v1.0&quot;</span>,
-    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;First stable release&quot;</span>
+    <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;ringo.starr@opencompute.org&quot;</span>,
+    <span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;administrator&quot;</span>
 }
 </code></pre>
 <h6 id="response">Response</h6>
 <pre><code class="lang-json">{
-    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;5990b061ccb8b2921b3c6f41&quot;</span>,
-    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;v1.0&quot;</span>,
-    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;First stable release&quot;</span>,
-    <span class="hljs-string">&quot;owner&quot;</span>: <span class="hljs-string">&quot;5880b061ccb8b2921b3c6e30&quot;</span>,
-    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
-    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;4973fceeccb8b0921b3c38fd&quot;</span>,
+    <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;ringo.starr@opencompute.org&quot;</span>,
+    <span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;administrator&quot;</span>,
+    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.792Z&quot;</span>,
+    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.792Z&quot;</span>
 }
 </code></pre>
 <h6 id="parameters">Parameters</h6>
@@ -345,25 +342,18 @@ file.</p>
 <td>Project ID</td>
 </tr>
 <tr>
-<td><code>cadModelId</code></td>
-<td>path</td>
-<td>string</td>
-<td>Yes</td>
-<td>CAD model ID</td>
-</tr>
-<tr>
-<td><code>name</code></td>
+<td><code>username</code></td>
 <td>body</td>
 <td>string</td>
 <td>Yes</td>
-<td>Revision name</td>
+<td>Member username</td>
 </tr>
 <tr>
-<td><code>description</code></td>
+<td><code>role</code></td>
 <td>body</td>
 <td>string</td>
-<td>No</td>
-<td>Revision description</td>
+<td>Yes</td>
+<td>Role identifier</td>
 </tr>
 </tbody>
 </table>
@@ -380,12 +370,12 @@ file.</p>
 <tr>
 <td><code>201</code></td>
 <td><code>Created</code></td>
-<td>Revision has been correctly created</td>
+<td>Membership has been correctly created</td>
 </tr>
 <tr>
 <td><code>409</code></td>
 <td><code>Conflict</code></td>
-<td>A revision already exists with the same name</td>
+<td>A membership already exists for this user</td>
 </tr>
 <tr>
 <td><code>400</code></td>
@@ -394,23 +384,22 @@ file.</p>
 </tr>
 <tr>
 <td><code>404</code></td>
-<td><code>Not found</code></td>
-<td>Project or CAD model does not exist</td>
+<td><code>Not Found</code></td>
+<td>Project does exist</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<p><span class="api method get">GET</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels/<code>{cadModelId}</code>/revisions</span></p>
-<p>Get all revisions that belongs to a CAD model.</p>
+<p><span class="api method get">GET</span> <span class="api label">/v1/projects/<code>{projectId}</code>/memberships</span></p>
+<p>List memberships for a project.</p>
 <h6 id="response">Response</h6>
 <pre><code class="lang-json">[
     {
-        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;5990b061ccb8b2921b3c6f41&quot;</span>,
-        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;v1.0&quot;</span>,
-        <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;First stable release&quot;</span>,
-        <span class="hljs-string">&quot;owner&quot;</span>: <span class="hljs-string">&quot;5880b061ccb8b2921b3c6e30&quot;</span>,
-        <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
-        <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;4973fceeccb8b0921b3c38fd&quot;</span>,
+        <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;ringo.starr@opencompute.org&quot;</span>,
+        <span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;administrator&quot;</span>,
+        <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.792Z&quot;</span>,
+        <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.792Z&quot;</span>
     }
 ]
 </code></pre>
@@ -433,12 +422,67 @@ file.</p>
 <td>Yes</td>
 <td>Project ID</td>
 </tr>
+</tbody>
+</table>
+<h6 id="response-codes">Response codes</h6>
+<table>
+<thead>
 <tr>
-<td><code>cadModelId</code></td>
+<th>Code</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td><code>Ok</code></td>
+<td>Membership list has been correctly returned</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td><code>Not Found</code></td>
+<td>Project does exist</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span class="api method get">GET</span> <span class="api label">/v1/projects/<code>{projectId}</code>/memberships/<code>{id}</code></span></p>
+<p>Get a single membership for a project.</p>
+<h6 id="response">Response</h6>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;4973fceeccb8b0921b3c38fd&quot;</span>,
+    <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;ringo.starr@opencompute.org&quot;</span>,
+    <span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;administrator&quot;</span>,
+    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.792Z&quot;</span>,
+    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-17T14:40:46.792Z&quot;</span>
+}
+</code></pre>
+<h6 id="parameters">Parameters</h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>projectId</code></td>
 <td>path</td>
 <td>string</td>
 <td>Yes</td>
-<td>CAD model ID</td>
+<td>Project ID</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>path</td>
+<td>string</td>
+<td>Yes</td>
+<td>Membership ID</td>
 </tr>
 </tbody>
 </table>
@@ -455,101 +499,21 @@ file.</p>
 <tr>
 <td><code>200</code></td>
 <td><code>Ok</code></td>
-<td>Revisions has been retrieved</td>
+<td>Membership has been correctly returned</td>
 </tr>
 <tr>
 <td><code>404</code></td>
-<td><code>Not found</code></td>
-<td>Project or CAD model does not exist</td>
+<td><code>Not Found</code></td>
+<td>Project or membership does exist</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<p><span class="api method put">PUT</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels/<code>{cadModelId}</code>/revisions/<code>{id}</code></span></p>
-<p>Upload the model binary file for this specific revision. If a file already exists for the revision
-it will be overwrited.</p>
-<h6 id="body">body</h6>
-<p>Single binary file in a <code>multipart/form-data</code> body</p>
-<h6 id="parameters">Parameters</h6>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>projectId</code></td>
-<td>path</td>
-<td>string</td>
-<td>Yes</td>
-<td>Project ID</td>
-</tr>
-<tr>
-<td><code>cadModelId</code></td>
-<td>path</td>
-<td>string</td>
-<td>Yes</td>
-<td>CAD model ID</td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td>path</td>
-<td>string</td>
-<td>Yes</td>
-<td>Revision ID</td>
-</tr>
-<tr>
-<td><code>content</code></td>
-<td>body</td>
-<td>binary</td>
-<td>Yes</td>
-<td>File to upload</td>
-</tr>
-</tbody>
-</table>
-<h6 id="response-codes">Response codes</h6>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>204</code></td>
-<td><code>No content</code></td>
-<td>File has been correctly uploaded</td>
-</tr>
-<tr>
-<td><code>400</code></td>
-<td><code>Bad Request</code></td>
-<td>Request is either malformed or incomplete</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td><code>Not found</code></td>
-<td>Project, CAD model or revision does not exist</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><span class="api method get">GET</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels/<code>{cadModelId}</code>/revisions/<code>{id}</code></span></p>
-<p>Get a single CAD model revision.</p>
+<p><span class="api method put">PUT</span> <span class="api label">/v1/projects/<code>{projectId}</code>/memberships/<code>{id}</code></span></p>
+<p>Update a single membership for a project. The only reason to update a membership is to change the user&apos;s role.</p>
 <h6 id="response">Response</h6>
 <pre><code class="lang-json">{
-    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;5990b061ccb8b2921b3c6f41&quot;</span>,
-    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;v1.0&quot;</span>,
-    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;First stable release&quot;</span>,
-    <span class="hljs-string">&quot;owner&quot;</span>: <span class="hljs-string">&quot;5880b061ccb8b2921b3c6e30&quot;</span>,
-    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
-    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
+    <span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;member&quot;</span>
 }
 </code></pre>
 <h6 id="parameters">Parameters</h6>
@@ -572,18 +536,18 @@ it will be overwrited.</p>
 <td>Project ID</td>
 </tr>
 <tr>
-<td><code>cadModelId</code></td>
-<td>path</td>
-<td>string</td>
-<td>Yes</td>
-<td>CAD model ID</td>
-</tr>
-<tr>
 <td><code>id</code></td>
 <td>path</td>
 <td>string</td>
 <td>Yes</td>
-<td>Revision ID</td>
+<td>Membership ID</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td>body</td>
+<td>string</td>
+<td>Yes</td>
+<td>Role for the user</td>
 </tr>
 </tbody>
 </table>
@@ -600,102 +564,7 @@ it will be overwrited.</p>
 <tr>
 <td><code>200</code></td>
 <td><code>Ok</code></td>
-<td>Project has been retrieved</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td><code>Not found</code></td>
-<td>Project, CAD model or revision does not exist</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><span class="api method put">PUT</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels/<code>{cadModelId}</code>/revisions/<code>{id}</code></span></p>
-<p>Update the specified revision.</p>
-<h6 id="body">body</h6>
-<pre><code class="lang-json">{
-    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;v1.0rc0&quot;</span>,
-    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;First stable release candidate&quot;</span>
-}
-</code></pre>
-<h6 id="response">Response</h6>
-<pre><code class="lang-json">{
-    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;5880b061ccb8b2921b3c6e30&quot;</span>,
-    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;v1.0rc0&quot;</span>,
-    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;First stable release candidate&quot;</span>,
-    <span class="hljs-string">&quot;owner&quot;</span>: <span class="hljs-string">&quot;5880b061ccb8b2921b3c6e30&quot;</span>,
-    <span class="hljs-string">&quot;createdAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
-    <span class="hljs-string">&quot;updatedAt&quot;</span>: <span class="hljs-string">&quot;2017-01-19T12:26:09.867Z&quot;</span>,
-}
-</code></pre>
-<h6 id="parameters">Parameters</h6>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>projectId</code></td>
-<td>path</td>
-<td>string</td>
-<td>Yes</td>
-<td>Project ID</td>
-</tr>
-<tr>
-<td><code>cadModelId</code></td>
-<td>path</td>
-<td>string</td>
-<td>Yes</td>
-<td>CAD Model ID</td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td>path</td>
-<td>string</td>
-<td>Yes</td>
-<td>Revision ID</td>
-</tr>
-<tr>
-<td><code>name</code></td>
-<td>body</td>
-<td>string</td>
-<td>No</td>
-<td>Revision name</td>
-</tr>
-<tr>
-<td><code>description</code></td>
-<td>body</td>
-<td>string</td>
-<td>No</td>
-<td>Revision description</td>
-</tr>
-</tbody>
-</table>
-<h6 id="response-codes">Response codes</h6>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>20O</code></td>
-<td><code>Ok</code></td>
-<td>CAD model has been correctly updated</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td><code>Not found</code></td>
-<td>Project, CAD model or revision does not exist</td>
+<td>Membership has been correctly returned</td>
 </tr>
 <tr>
 <td><code>400</code></td>
@@ -703,15 +572,15 @@ it will be overwrited.</p>
 <td>Request is either malformed or incomplete</td>
 </tr>
 <tr>
-<td><code>409</code></td>
-<td><code>Conflict</code></td>
-<td>A revision already exists with the same name</td>
+<td><code>404</code></td>
+<td><code>Not Found</code></td>
+<td>Project or membership does exist</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<p><span class="api method delete">DETELE</span> <span class="api label">/v1/projects/<code>{projectId}</code>/cadmodels/<code>{cadModelId}</code>/revisions/<code>{id}</code></span></p>
-<p>Delete a single revision.</p>
+<p><span class="api method delete">DELETE</span> <span class="api label">/v1/projects/<code>{projectId}</code>/memberships/<code>{id}</code></span></p>
+<p>Delete a membership on a project.</p>
 <h6 id="parameters">Parameters</h6>
 <table>
 <thead>
@@ -732,18 +601,11 @@ it will be overwrited.</p>
 <td>Project ID</td>
 </tr>
 <tr>
-<td><code>cadModelId</code></td>
-<td>path</td>
-<td>string</td>
-<td>Yes</td>
-<td>CAD Model ID</td>
-</tr>
-<tr>
 <td><code>id</code></td>
 <td>path</td>
 <td>string</td>
 <td>Yes</td>
-<td>CAD model ID</td>
+<td>Membership ID</td>
 </tr>
 </tbody>
 </table>
@@ -759,13 +621,13 @@ it will be overwrited.</p>
 <tbody>
 <tr>
 <td><code>204</code></td>
-<td><code>No content</code></td>
-<td>CAD model has been delete</td>
+<td><code>No Content</code></td>
+<td>Membership has been correctly deleted</td>
 </tr>
 <tr>
 <td><code>404</code></td>
-<td><code>Not found</code></td>
-<td>Project, CAD model or revision does not exist</td>
+<td><code>Not Found</code></td>
+<td>Project or membership does exist</td>
 </tr>
 </tbody>
 </table>
@@ -797,12 +659,12 @@ it will be overwrited.</p>
 
             
                 
-                <a href="cadmodels.html" class="navigation navigation-prev " aria-label="Previous page: CAD Models">
+                <a href="roles.html" class="navigation navigation-prev " aria-label="Previous page: Roles">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../../contribute/" class="navigation navigation-next " aria-label="Next page: How to contribute ?">
+                <a href="cadmodels.html" class="navigation navigation-next " aria-label="Next page: CAD Models">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -813,7 +675,7 @@ it will be overwrited.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CAD Model Revisions","level":"1.2.7","depth":2,"next":{"title":"How to contribute ?","level":"1.3","depth":1,"path":"contribute/README.md","ref":"contribute/README.md","articles":[{"title":"Contribution workflow","level":"1.3.1","depth":2,"path":"contribute/workflow.md","ref":"contribute/workflow.md","articles":[]},{"title":"Setup development environment","level":"1.3.2","depth":2,"path":"contribute/setupdevenv.md","ref":"contribute/setupdevenv.md","articles":[]}]},"previous":{"title":"CAD Models","level":"1.2.6","depth":2,"path":"api/v1/cadmodels.md","ref":"api/v1/cadmodels.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/v1/cadmodelrevisions.md","mtime":"2017-01-31T16:32:55.287Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-31T16:35:05.233Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Memberships","level":"1.2.5","depth":2,"next":{"title":"CAD Models","level":"1.2.6","depth":2,"path":"api/v1/cadmodels.md","ref":"api/v1/cadmodels.md","articles":[]},"previous":{"title":"Roles","level":"1.2.4","depth":2,"path":"api/v1/roles.md","ref":"api/v1/roles.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/v1/memberships.md","mtime":"2017-01-31T16:32:55.287Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-31T16:35:05.233Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
