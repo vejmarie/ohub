@@ -26,6 +26,22 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+  '/projects': {
+    view: 'projects'
+  },
+
+  '/ggiamarchi/ruggedpod': {
+    view: 'project'
+  },
+
+  '/ggiamarchi/ruggedpod/mecanic': {
+    view: 'mecanic'
+  },
+
+  '/about': {
+    view: 'about'
+  },
+
   'post /api/v1/tokens': 'AuthController.authenticate',
 
   'post   /api/v1/projects/:projectId/cadmodels'     : 'CadModelController.create',
